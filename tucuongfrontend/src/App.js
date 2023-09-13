@@ -7,6 +7,7 @@ import {Routes, Route} from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Cuong } from './pages/Cuong';
 import { Counter } from './components/Counter';
+import { Storage} from './pages/Storage'
 import { createContext, useState } from 'react';
 
 // có 3 th
@@ -20,6 +21,8 @@ export const Session = createContext(null)
 function App() {
   // function App là bố của những cái component còn lại, nên là state nào lưu ở app
   // trong hàm app, anh sẽ khai bảo 1 state giá trị khởi điểm là null
+  
+  // anh set lại giá trị user ở App, và anh truyền hàm setUser cho những thằng con của App
   const [user, setUser] = useState(null)
 
   // anh sẽ cung cấp cho những thằng component nằm bên trong thằng
@@ -32,6 +35,7 @@ function App() {
       <Routes>
           <Route path="/cuong" element = {<Cuong />} />
           <Route path="/home" element = {<Home />} />
+          <Route path="/storage" element = {<Storage />} />
       </Routes>
       <Counter/>
       {/* user.toString() */}

@@ -7,8 +7,17 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { GoogleSignIn } from './GoogleSignIn';
 import { SignInModal } from './SignInModal';
+import { useContext } from 'react';
+import { Session } from '../App';
+import { Image } from 'react-bootstrap';
+import { Link} from 'react-router-dom'
 
 function OffcanvasExample() {
+
+   // lấy ra user trong session
+   const session = useContext(Session)
+   const user = session.user
+
     // hàm này nó return về html, à có thể gọi hàm này để hiển thị ra html
   return (
     <>
@@ -19,8 +28,20 @@ function OffcanvasExample() {
             <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
             
             <Nav className="me-auto">
-                <Nav.Link href="/Home">Home</Nav.Link>
-                <Nav.Link href="/Cuong">Cuong</Nav.Link>
+             {/* link nó sẽ chuyển tới 1 cái URL mà không loai lại trang, khác với href */}
+             <div className="d-flex">
+          {/* link nó sẽ chuyển tới 1 cái URL mà không loại lại trang, khác với href */}
+        <Link style={{ color: 'black' }} to="/Home">
+      Home
+    </Link>
+    <Link style={{ color: 'black' }} to="/Cuong">
+      Cuong
+    </Link>
+
+    <Link style={{ color: 'black' }} to="/Storage">
+      Storage
+    </Link>
+  </div>
             </Nav>
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -36,36 +57,18 @@ function OffcanvasExample() {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/Home">Home</Nav.Link>
-                  <Nav.Link href="/Cuong">Cuong</Nav.Link>
-                  <NavDropdown
-                    title="Dropdown"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">
-                      Something else here
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
-                <GoogleSignIn />
+                 
+                 {
+                   user == null 
+                   ? <SignInModal />
+                   : <div>
+                    <Image src="images/EmptyImage.webp" thumbnail /> 
+                    <h4> {user.firstName} {user.lastName} </h4>
+                    <div> {user.email} </div>
+                   </div>   
 
-                <SignInModal />
-
+                        
+                  }
 
               </Offcanvas.Body>
             </Navbar.Offcanvas>

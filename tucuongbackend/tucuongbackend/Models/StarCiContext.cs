@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace tucuongbackend.Models;
 
-// nó là file DBConnect.java trong prj
 public partial class StarCiContext : DbContext
 {
     public StarCiContext()
@@ -17,6 +16,8 @@ public partial class StarCiContext : DbContext
     }
 
     public virtual DbSet<Account> Accounts { get; set; }
+
+    public virtual DbSet<Plant> Plants { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -52,6 +53,30 @@ public partial class StarCiContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("password");
             entity.Property(e => e.Sex).HasColumnName("sex");
+        });
+
+        modelBuilder.Entity<Plant>(entity =>
+        {
+            entity.ToTable("Plant");
+
+            entity.Property(e => e.PlantId)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .HasColumnName("plantId");
+            entity.Property(e => e.Description)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("description");
+            entity.Property(e => e.Image)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("image");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("name");
+            entity.Property(e => e.Price).HasColumnName("price");
+            entity.Property(e => e.Quantity).HasColumnName("quantity");
         });
 
         OnModelCreatingPartial(modelBuilder);

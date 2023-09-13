@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using tucuongbackend.Models;
 
 namespace tucuongbackend.Controllers
@@ -27,10 +31,10 @@ namespace tucuongbackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
         {
-          if (_context.Accounts == null)
-          {
-              return NotFound();
-          }
+            if (_context.Accounts == null)
+            {
+                return NotFound();
+            }
             return await _context.Accounts.ToListAsync();
         }
 
@@ -38,10 +42,10 @@ namespace tucuongbackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Account>> GetAccount(string id)
         {
-          if (_context.Accounts == null)
-          {
-              return NotFound();
-          }
+            if (_context.Accounts == null)
+            {
+                return NotFound();
+            }
             var account = await _context.Accounts.FindAsync(id);
 
             if (account == null)
@@ -94,6 +98,11 @@ namespace tucuongbackend.Controllers
             public string Password { get; set; }
         }
 
+        public class SignInResponse
+        {
+            public Account Account { get; set; }
+            public string AccessToken { get; set; }
+        }
 
         [HttpPost("SignIn")]
         // dòng Task<ActionResult<Account>> hơi dài, nhưng mà ta chỉ cần để ý tới cái trong cùng, tức là Account
@@ -108,12 +117,12 @@ namespace tucuongbackend.Controllers
             //Account là cái bảng Account trong db
             //First Or Default Async là hàm tìm cái đầu tiên trong db, nếu có thì trả về Account, còn nếu không trả về null
             var result = await _context.Accounts.FirstOrDefaultAsync(
-                
+
                 // code trong xanh là cây
                 // sẽ kiểm tra mỗi row trong cái bảng Account
                 // nếu thuộc tính email của nó == thuộc tính email trong body + thuộc tính password của nó == thuộc tính password trong body
                 // thì sẽ trả về cái row đó => LINQ 
-                row => 
+                row =>
                 row.Email == body.Email && row.Password == body.Password
                 //
                 );
@@ -133,10 +142,10 @@ namespace tucuongbackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(Account account)
         {
-          if (_context.Accounts == null)
-          {
-              return Problem("Entity set 'StarCiContext.Accounts'  is null.");
-          }
+            if (_context.Accounts == null)
+            {
+                return Problem("Entity set 'StarCiContext.Accounts'  is null.");
+            }
             _context.Accounts.Add(account);
             try
             {

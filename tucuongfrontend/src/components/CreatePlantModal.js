@@ -10,7 +10,7 @@ import { Session } from '../App';
 
 
 // export bình thường, export bình thường là đang export cái hàm Example
-export function SignInModal() {
+export function CreatePlantModal() {
 
   const session = useContext(Session)
 

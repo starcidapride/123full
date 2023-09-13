@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace tucuongbackend.Models;
 
-// cái này là cái DTO trong PRJ
 public partial class Account
 {
     public string Email { get; set; } = null!;

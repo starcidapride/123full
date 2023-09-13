@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aZJTy4iNXllrJNkxJhogvR95ZJo2wpJx90mmqeeIDJg94DcKr9hxvNIroKC7nYiGZ+2W0zsOFVP5y+7ZtglU9Q==",
+  "dgSpecHash": "drXbHJVecDZ1a0vHReiFp6pmrU9467TehsPiqclKUJ+r/xqSZP2jLYkDrS5nvCmJG6NtCrCjO2DVS6JYiEtcJg==",
   "success": true,
-  "projectFilePath": "D:\\tucuongbackend\\tucuongbackend\\tucuongbackend.csproj",
+  "projectFilePath": "D:\\123full\\tucuongbackend\\tucuongbackend\\tucuongbackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tucuo\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\tucuo\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -60,6 +60,7 @@
     "C:\\Users\\tucuo\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\tucuo\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\tucuo\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\tucuo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.22\\microsoft.aspnetcore.authentication.jwtbearer.6.0.22.nupkg.sha512",
     "C:\\Users\\tucuo\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\tucuo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\tucuo\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
