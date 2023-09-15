@@ -38,7 +38,8 @@ export function SignInModal() {
       password: values.password
     })
     .then(response => {
-      session.setUser(response.data)
+      session.setUser(response.data.account)
+      localStorage.setItem("accessToken", response.data.accessToken)
     })
     .catch(error => console.log(error))
 
