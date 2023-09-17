@@ -1,7 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Container, Col, Row } from "react-bootstrap"
+import { Container, Col, Row, Button } from "react-bootstrap"
 import PlantCard from "../components/PlantCard"
+import { CreatePlantModal } from "../components/CreatePlantModal"
 
 export const Storage = () => {
 
@@ -41,6 +42,7 @@ export const Storage = () => {
 
     return <div>
        <Container>
+        <CreatePlantModal />
         <Row>
              {renderPlants()}
         </Row>

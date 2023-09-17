@@ -10,6 +10,7 @@ import { Counter } from './components/Counter';
 import { Storage} from './pages/Storage'
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Details } from './pages/Details';
 
 // có 3 th
 // nếu đường dẫn là /cuong thì nó sẽ render ra <TuCuong /> và <Cuong/> ở dưới
@@ -64,6 +65,7 @@ function App() {
           <Route path="/cuong" element = {<Cuong />} />
           <Route path="/home" element = {<Home />} />
           <Route path="/storage" element = {<Storage />} />
+          <Route path="/fruits/:id" element = {<Details />} />
       </Routes>
       <Counter/>
       {/* user.toString() */}

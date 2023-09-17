@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,12 @@ namespace tucuongbackend.Controllers
 
         // PUT: api/Plants/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
+        // authorize yêu cầu phải có token, hqua nói r
+        //
+        
+        // bất kỳ ai cũng gọi api, tùy cấu hinhg
+        [AllowAnonymous]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlant(string id, Plant plant)
         {
@@ -77,6 +84,8 @@ namespace tucuongbackend.Controllers
 
         // POST: api/Plants
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<Plant>> PostPlant(Plant plant)
         {

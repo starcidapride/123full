@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 function PlantCard(props) {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={props.data.image} />
       <Card.Body>
         <Card.Title>{props.data.name}</Card.Title>
         <Card.Text>
